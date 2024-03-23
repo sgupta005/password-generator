@@ -1,72 +1,59 @@
+import { useReducer } from 'react';
+import { CharacterLength } from './components/CharacterLength';
+import { Options } from './components/Options';
+import { Heading } from './components/Heading';
+import { Display } from './components/Display';
+import { Generator } from './components/Generator';
+import { Strength } from './components/Strength';
+import { GenerateBtn } from './components/GenerateBtn';
+
+export const ACTIONS = {
+  CHANGE_LENGTH: 'change-length',
+  TOGGLE_UPPER: 'toggle-uppercase',
+  TOGGLE_LOWER: 'toggle-lowercase',
+  TOGGLE_NUMBERS: 'toggle-numbers',
+  TOGGLE_SYMBOLS: 'toggle-symbols',
+};
+
+const initialState = {
+  length: 10,
+  includeUpper: false,
+  includeLower: false,
+  includeNumbers: false,
+  includeSymbols: false,
+};
+
+function reducer(state, action) {
+  switch (action.type) {
+    case ACTIONS.CHANGE_LENGTH:
+      return { ...state, length: action.payload.length };
+    case ACTIONS.TOGGLE_UPPER:
+      return { ...state, includeUpper: !state.includeUpper };
+    case ACTIONS.TOGGLE_LOWER:
+      return { ...state, includeLower: !state.includeLower };
+    case ACTIONS.TOGGLE_NUMBERS:
+      return { ...state, includeNumbers: !state.includeNumbers };
+    case ACTIONS.TOGGLE_SYMBOLS:
+      return { ...state, includeSymbols: !state.includeSymbols };
+    default:
+      return state;
+  }
+}
+
 function App() {
+  const [state, dispatch] = useReducer(reducer, initialState);
   return (
     <div>
       <Heading />
       <Display />
       <Generator>
-        <CharacterLength />
-        <Options />
+        <CharacterLength state={state} dispatch={dispatch} />
+        <Options state={state} dispatch={dispatch} />
         <Strength />
         <GenerateBtn />
       </Generator>
     </div>
   );
-}
-
-function Heading() {
-  return <h1>Password Generator</h1>;
-}
-
-function Display() {
-  return <input disabled type="text" placeholder="P4$5W0rD!" />;
-}
-
-// eslint-disable-next-line react/prop-types
-function Generator({ children }) {
-  return <div>{children}</div>;
-}
-
-function CharacterLength() {
-  return (
-    <div className="flex">
-      <div>
-        <p>Character Length</p>
-        <input type="range" min={1} max={20} />
-      </div>
-      <p>10</p>
-    </div>
-  );
-}
-
-function Options() {
-  return (
-    <div>
-      <input type="checkbox" />
-      <label>Include Uppercase Letters</label>
-      <br />
-      <input type="checkbox" />
-      <label>Include Lowercase Letters</label>
-      <br />
-      <input type="checkbox" />
-      <label>Include Numbers</label>
-      <br />
-      <input type="checkbox" />
-      <label>Include Symbols</label>
-      <br />
-    </div>
-  );
-}
-
-function Strength() {
-  return (
-    <div>
-      <p>Strength</p>
-    </div>
-  );
-}
-
-function GenerateBtn() {
-  return <button>Generate</button>;
 }
 
 export default App;
