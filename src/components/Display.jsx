@@ -1,3 +1,3 @@
-export function Display() {
-  return <input disabled type="text" placeholder="P4$5W0rD!" />;
+export function Display({ pass }) {
+  return <input disabled type="text" value={pass} />;
 }

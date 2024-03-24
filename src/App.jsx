@@ -1,4 +1,4 @@
-import { useReducer } from 'react';
+import { useReducer, useState } from 'react';
 import { CharacterLength } from './components/CharacterLength';
 import { Options } from './components/Options';
 import { Heading } from './components/Heading';
@@ -42,15 +42,16 @@ function reducer(state, action) {
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const [pass, setPass] = useState('P4$5W0rD!');
   return (
     <div>
       <Heading />
-      <Display />
+      <Display pass={pass} />
       <Generator>
         <CharacterLength state={state} dispatch={dispatch} />
         <Options state={state} dispatch={dispatch} />
         <Strength />
-        <GenerateBtn />
+        <GenerateBtn state={state} setPass={setPass} />
       </Generator>
     </div>
   );
