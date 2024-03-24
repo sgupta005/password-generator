@@ -10,7 +10,7 @@ export function Display({ pass }) {
     setTimeout(() => setCopy((c) => !c), 1000);
   }
   return (
-    <div className="flex bg-[#23222A] w-full h-20 justify-between items-center text-3xl px-8 pb-2 font-bold">
+    <div className="flex bg-[#23222A] w-full h-20 justify-between items-center sm:text-3xl px-8 pb-2 font-bold text-xl">
       <input
         ref={inputRef}
         disabled

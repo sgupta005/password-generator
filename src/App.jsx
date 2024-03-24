@@ -44,7 +44,7 @@ function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [pass, setPass] = useState('');
   return (
-    <div className=" text-white mx-auto max-w-[540px] pt-20">
+    <div className=" text-white mx-auto max-w-[540px] sm:pt-20 pt-6">
       <Heading />
       <Display pass={pass} />
       <Generator>
