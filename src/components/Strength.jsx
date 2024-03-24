@@ -1,5 +1,5 @@
 const REMARKS = ['Too Weak!', 'Weak', 'Medium', 'Strong'];
-const className = 'w-4 h-11 border-2 border-black ';
+const className = 'w-3 h-8 border-2 border-white ';
 
 function includesLower(str) {
   return /[a-z]/.test(str);
@@ -35,18 +35,22 @@ export function Strength({ pass }) {
   if (strength === 4) indicatorColor = 'bg-green-400 border-green-400';
 
   return (
-    <div className="flex space-x-4">
-      <p>Strength</p>
-      <div>{REMARKS[strength - 1]}</div>
-      <div className="flex space-x-2">
-        {Array.from({ length: 4 }, (_, i) => (
-          <div
-            key={i}
-            className={
-              i + 1 <= strength ? className + indicatorColor : className
-            }
-          ></div>
-        ))}
+    <div className="flex space-x-4 bg-[#191820] text-xl h-16 px-6 items-center justify-between">
+      <p className="text-[#807C92] font-semibold uppercase">Strength</p>
+      <div className="flex items-cente space-x-2">
+        <div className="uppercase font-bold text-2xl">
+          {REMARKS[strength - 1]}
+        </div>
+        <div className="flex space-x-2">
+          {Array.from({ length: 4 }, (_, i) => (
+            <div
+              key={i}
+              className={
+                i + 1 <= strength ? className + indicatorColor : className
+              }
+            ></div>
+          ))}
+        </div>
       </div>
     </div>
   );

@@ -23,5 +23,12 @@ export function GenerateBtn({ state, setPass }) {
     setPass(password);
   }
 
-  return <button onClick={() => generatePassword(state)}>Generate</button>;
+  return (
+    <button
+      onClick={() => generatePassword(state)}
+      className="bg-[#A3FFAE] h-16 w-full text-black text-xl uppercase font-semibold hover:bg-inherit hover:border-2 border-[#A3FFAE] hover:text-[#A3FFAE] mt-8"
+    >
+      Generate
+    </button>
+  );
 }
