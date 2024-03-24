@@ -42,7 +42,7 @@ function reducer(state, action) {
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const [pass, setPass] = useState('P4$5W0rD!');
+  const [pass, setPass] = useState('');
   return (
     <div>
       <Heading />
@@ -50,7 +50,7 @@ function App() {
       <Generator>
         <CharacterLength state={state} dispatch={dispatch} />
         <Options state={state} dispatch={dispatch} />
-        <Strength />
+        <Strength pass={pass} />
         <GenerateBtn state={state} setPass={setPass} />
       </Generator>
     </div>

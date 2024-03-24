@@ -1,10 +1,10 @@
 export function GenerateBtn({ state, setPass }) {
   function generatePassword({
     length,
-    includeLower,
     includeUpper,
-    includeSymbols,
+    includeLower,
     includeNumbers,
+    includeSymbols,
   }) {
     if (!includeLower && !includeUpper && !includeSymbols && !includeNumbers)
       return;
